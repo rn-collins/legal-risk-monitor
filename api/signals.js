@@ -48,14 +48,20 @@ function fmt(dateStr) {
 async function fetchCongress() {
   // Congress.gov API — AI governance bills, free, no key needed for basic search
   const url =
-    "https://api.congress.gov/v3/bill?query=artificial+intelligence&sort=updateDate+desc&limit=3&format=json&api_key=DEMO_KEY";
+    "https://api.congress.gov/v3/bill?query=%22artificial+intelligence%22+%22AI%22&sort=updateDate+desc&limit=5&format=json&api_key=5WcCqAYBQiqC2k4zhQX8LG9eEeegg57MeqRR0Koh";
   const res = await fetch(url, {
     headers: { Accept: "application/json" },
     signal: AbortSignal.timeout(8000),
   });
   if (!res.ok) throw new Error(`Congress.gov ${res.status}`);
   const data = await res.json();
-  const bills = (data.bills || []).slice(0, 3);
+  const aiKeywords = ['artificial intelligence', 'ai act', 'ai system', 'ai governance', 'ai accountability', 'algorithmic', 'automated decision', 'machine learning', 'generative ai'];
+  const allBills = data.bills || [];
+  const filtered = allBills.filter(b => {
+    const text = (b.title || '').toLowerCase();
+    return aiKeywords.some(k => text.includes(k));
+  });
+  const bills = (filtered.length > 0 ? filtered : allBills).slice(0, 2);
   return bills.map((b) => ({
     source: "Congress.gov",
     category: "AI Governance",
