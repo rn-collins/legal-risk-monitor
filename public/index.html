@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Startup Legal Risk Monitor — Aloha AI Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal:       #1B7A68;
+    --teal-dark:  #085041;
+    --teal-light: #E0F5F0;
+    --teal-mid:   #2A9D87;
+    --teal-text:  #0A3D33;
+    --off-white:  #F7F9F8;
+    --white:      #FFFFFF;
+    --ink:        #1C1B1F;
+    --ink-mid:    #4A5568;
+    --ink-light:  #718096;
+    --border:     #D9E8E5;
+    --border-light: #EDF5F3;
+    --red:        #C53030;
+    --red-bg:     #FFF5F5;
+    --amber:      #92400E;
+    --amber-bg:   #FFFBEB;
+    --font-sans:  'DM Sans', sans-serif;
+    --font-mono:  'DM Mono', monospace;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--off-white);
+    color: var(--ink);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--teal-dark);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .header-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .header-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .header-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .live-dot {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .live-dot::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4DB8A0;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* ── HERO BAND ── */
+  .hero-band {
+    background: var(--teal-dark);
+    padding: 0 24px 28px;
+    border-bottom: 3px solid var(--teal);
+  }
+
+  .hero-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .hero-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    max-width: 560px;
+    line-height: 1.6;
+  }
+
+  .hero-desc strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-family: var(--font-mono);
+  }
+
+  .last-updated {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ink-light);
+  }
+
+  /* ── SIGNAL GRID ── */
+  .signal-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 48px;
+  }
+
+  /* ── SIGNAL CARD ── */
+  .signal-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--teal);
+    border-radius: 8px;
+    padding: 16px 18px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: start;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .signal-card:hover {
+    border-color: var(--teal);
+    border-left-color: var(--teal-mid);
+    box-shadow: 0 2px 12px rgba(27,122,104,0.08);
+  }
+
+  .signal-card.risk-immediate {
+    border-left-color: var(--red);
+  }
+
+  .signal-card.risk-watch {
+    border-left-color: #D97706;
+  }
+
+  .signal-card.risk-info {
+    border-left-color: var(--teal);
+  }
+
+  .signal-card.static-card {
+    background: var(--teal-light);
+    border-color: #A8D8CF;
+    border-left-color: var(--teal);
+  }
+
+  .signal-body { min-width: 0; }
+
+  .signal-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+  }
+
+  .signal-source {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--teal);
+    letter-spacing: 0.04em;
+  }
+
+  .signal-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+
+  .signal-category {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ink-light);
+  }
+
+  .signal-date {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ink-light);
+    margin-left: auto;
+  }
+
+  .signal-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.35;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+
+  .signal-summary {
+    font-size: 12px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+
+  .risk-badge {
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+
+  .badge-immediate {
+    background: var(--red-bg);
+    color: var(--red);
+    border: 1px solid #FEB2B2;
+  }
+
+  .badge-watch {
+    background: var(--amber-bg);
+    color: var(--amber);
+    border: 1px solid #FCD34D;
+  }
+
+  .badge-info {
+    background: var(--teal-light);
+    color: var(--teal-text);
+    border: 1px solid #A8D8CF;
+  }
+
+  /* ── SKELETON LOADING ── */
+  .skeleton {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    animation: shimmer 1.4s ease-in-out infinite;
+  }
+
+  .skel-line {
+    height: 10px;
+    background: var(--border-light);
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  .skel-line.wide { width: 70%; }
+  .skel-line.full { width: 100%; }
+  .skel-line.mid  { width: 85%; }
+
+  @keyframes shimmer {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* ── ERROR STATE ── */
+  .error-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    color: var(--ink-mid);
+    font-size: 13px;
+  }
+
+  /* ── SUBSCRIBE SECTION ── */
+  .subscribe-section {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 48px;
+  }
+
+  .subscribe-heading {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .subscribe-sub {
+    font-size: 12px;
+    color: var(--ink-mid);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .subscribe-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .subscribe-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 14px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    outline: none;
+    background: var(--off-white);
+    color: var(--ink);
+    transition: border-color 0.15s;
+  }
+
+  .subscribe-input:focus {
+    border-color: var(--teal);
+    background: var(--white);
+  }
+
+  .subscribe-btn {
+    padding: 10px 20px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    background: var(--teal);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+
+  .subscribe-btn:hover { background: var(--teal-dark); }
+
+  .subscribe-confirm {
+    display: none;
+    font-size: 12px;
+    color: var(--teal);
+    margin-top: 8px;
+    font-family: var(--font-mono);
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand {
+    font-size: 12px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+
+  .footer-brand strong {
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .footer-link {
+    font-size: 12px;
+    color: var(--ink-light);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    transition: color 0.15s;
+  }
+
+  .footer-link:hover { color: var(--teal); }
+
+  .disclaimer {
+    font-size: 10px;
+    color: var(--ink-light);
+    margin-top: 12px;
+    line-height: 1.6;
+    font-family: var(--font-mono);
+    padding-top: 12px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .header-inner { padding: 14px 16px; }
+    .hero-band { padding: 0 16px 20px; }
+    .main { padding: 24px 16px 48px; }
+    .signal-card { grid-template-columns: 1fr; }
+    .risk-badge { width: fit-content; }
+    .signal-date { margin-left: 0; }
+    .site-footer { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <span class="header-eyebrow">Aloha AI Consulting</span>
+      <span class="header-title">Startup Legal Risk Monitor</span>
+    </div>
+    <div class="header-meta">
+      <span class="live-dot" id="live-label">Loading</span>
+    </div>
+  </div>
+</header>
+
+<div class="hero-band">
+  <div class="hero-inner">
+    <p class="hero-desc">
+      Live regulatory signals for <strong>startup founders</strong> — SEC filings, FTC enforcement actions,
+      CFPB guidance, federal AI governance bills, and state-level AI legislation.
+      Signals refresh hourly. Risk tiers: <strong>IMMEDIATE</strong> · <strong>WATCH</strong> · <strong>INFO</strong>.
+    </p>
+  </div>
+</div>
+
+<main class="main">
+
+  <div class="section-header">
+    <span class="section-title">Active Signals</span>
+    <span class="last-updated" id="last-updated-label">—</span>
+  </div>
+
+  <div class="signal-grid" id="signal-grid">
+    <!-- skeletons while loading -->
+    <div class="skeleton"><div class="skel-line wide"></div><div class="skel-line full"></div><div class="skel-line mid"></div></div>
+    <div class="skeleton"><div class="skel-line wide"></div><div class="skel-line full"></div><div class="skel-line mid"></div></div>
+    <div class="skeleton"><div class="skel-line wide"></div><div class="skel-line full"></div><div class="skel-line mid"></div></div>
+    <div class="skeleton"><div class="skel-line wide"></div><div class="skel-line full"></div><div class="skel-line mid"></div></div>
+    <div class="skeleton"><div class="skel-line wide"></div><div class="skel-line full"></div><div class="skel-line mid"></div></div>
+  </div>
+
+  <div class="subscribe-section">
+    <div class="subscribe-heading">Get weekly alerts</div>
+    <p class="subscribe-sub">
+      New signals delivered every Monday morning — SEC rulemaking, FTC enforcement, AI governance bills advancing through committee.
+      No gate. Unsubscribe anytime.
+    </p>
+    <div class="subscribe-form">
+      <input class="subscribe-input" type="email" id="sub-email" placeholder="your@email.com" autocomplete="email">
+      <button class="subscribe-btn" onclick="handleSubscribe()">Subscribe</button>
+    </div>
+    <div class="subscribe-confirm" id="sub-confirm">✓ You're on the list. First alert arrives Monday.</div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        Built by <strong>RN Collins</strong> · Aloha AI Consulting<br>
+        Legal AI &amp; Regulatory Intelligence · Honolulu, HI
+      </div>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/rn-collins" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+        <a href="https://rncollins.com" target="_blank" rel="noopener" class="footer-link">rncollins.com</a>
+      </div>
+    </div>
+    <p class="disclaimer">
+      This tool monitors public regulatory data sources for informational purposes only.
+      Nothing on this page constitutes legal advice. Signals are drawn from public government feeds and may not reflect the most recent agency action.
+      Consult qualified legal counsel for advice specific to your situation.
+    </p>
+  </div>
+</footer>
+
+<script>
+const RISK_CLASS = { IMMEDIATE: 'risk-immediate', WATCH: 'risk-watch', INFO: 'risk-info' };
+const BADGE_CLASS = { IMMEDIATE: 'badge-immediate', WATCH: 'badge-watch', INFO: 'badge-info' };
+
+function renderCard(sig) {
+  const riskClass = RISK_CLASS[sig.risk] || 'risk-info';
+  const badgeClass = BADGE_CLASS[sig.risk] || 'badge-info';
+  const staticClass = sig.static ? ' static-card' : '';
+  const tag = sig.url && sig.url !== '#' ? 'a' : 'div';
+  const hrefAttr = tag === 'a' ? `href="${sig.url}" target="_blank" rel="noopener"` : '';
+  return `
+    <${tag} class="signal-card ${riskClass}${staticClass}" ${hrefAttr}>
+      <div class="signal-body">
+        <div class="signal-meta">
+          <span class="signal-source">${sig.source}</span>
+          <span class="signal-dot"></span>
+          <span class="signal-category">${sig.category}</span>
+          <span class="signal-date">${sig.date}</span>
+        </div>
+        <div class="signal-title">${sig.title}</div>
+        <div class="signal-summary">${sig.summary}</div>
+      </div>
+      <span class="risk-badge ${badgeClass}">${sig.risk}</span>
+    </${tag}>
+  `;
+}
+
+async function loadSignals() {
+  const grid = document.getElementById('signal-grid');
+  const liveLabel = document.getElementById('live-label');
+  const lastUpdated = document.getElementById('last-updated-label');
+
+  try {
+    const res = await fetch('/api/signals');
+    if (!res.ok) throw new Error('API error ' + res.status);
+    const data = await res.json();
+
+    if (!data.signals || data.signals.length === 0) {
+      grid.innerHTML = '<div class="error-card">No signals retrieved. Check back shortly.</div>';
+      return;
+    }
+
+    grid.innerHTML = data.signals.map(renderCard).join('');
+
+    const d = new Date(data.generatedAt);
+    const timeStr = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
+    lastUpdated.textContent = 'Updated ' + timeStr;
+    liveLabel.textContent = data.sourceCount + ' signals live';
+  } catch (err) {
+    console.error('Signal load error:', err);
+    grid.innerHTML = '<div class="error-card">Unable to load signals right now. Please try again in a moment.</div>';
+    liveLabel.textContent = 'Offline';
+  }
+}
+
+function handleSubscribe() {
+  const email = document.getElementById('sub-email').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('sub-email').focus();
+    return;
+  }
+  document.getElementById('sub-confirm').style.display = 'block';
+  document.getElementById('sub-email').disabled = true;
+  document.querySelector('.subscribe-btn').disabled = true;
+  document.querySelector('.subscribe-btn').textContent = 'Subscribed';
+  // In production: wire to /api/subscribe -> HubSpot
+}
+
+loadSignals();
+// Refresh every 60 minutes
+setInterval(loadSignals, 60 * 60 * 1000);
+</script>
+
+</body>
+</html>
