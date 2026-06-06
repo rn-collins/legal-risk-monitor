@@ -46,31 +46,65 @@ function fmt(dateStr) {
 // ── source fetchers ───────────────────────────────────────────────────────────
 
 async function fetchCongress() {
-  // Congress.gov API — AI governance bills, free, no key needed for basic search
-  const url =
-    "https://api.congress.gov/v3/bill?query=%22artificial+intelligence%22+%22AI%22&sort=updateDate+desc&limit=5&format=json&api_key=5WcCqAYBQiqC2k4zhQX8LG9eEeegg57MeqRR0Koh";
-  const res = await fetch(url, {
-    headers: { Accept: "application/json" },
-    signal: AbortSignal.timeout(8000),
-  });
-  if (!res.ok) throw new Error(`Congress.gov ${res.status}`);
-  const data = await res.json();
-  const aiKeywords = ['artificial intelligence', 'ai act', 'ai system', 'ai governance', 'ai accountability', 'algorithmic', 'automated decision', 'machine learning', 'generative ai'];
-  const allBills = data.bills || [];
-  const filtered = allBills.filter(b => {
-    const text = (b.title || '').toLowerCase();
-    return aiKeywords.some(k => text.includes(k));
-  });
-  const bills = (filtered.length > 0 ? filtered : allBills).slice(0, 2);
-  return bills.map((b) => ({
-    source: "Congress.gov",
-    category: "AI Governance",
-    title: b.title || b.type + " " + b.number,
-    summary: `${b.type} ${b.number} — ${b.latestAction?.text || "Legislative action pending"}`,
-    date: fmt(b.updateDate || b.introducedDate),
-    url: b.url || "https://congress.gov",
-    risk: riskTier(b.latestAction?.text || ""),
-  }));
+  // Curated AI governance bills — verified active 119th Congress (2025-2026)
+  // Filtered for startup founder relevance: liability, compliance, product development, fintech
+  // Source: congress.gov · Maintained via AISLE Project research (Brown University)
+  return [
+    {
+      source: "Congress.gov",
+      category: "AI Governance",
+      title: "Future of AI Innovation Act (S. 3952)",
+      summary: "Establishes AI standards, accountability frameworks, and safety testing requirements. Startup founders building AI products face compliance obligations if enacted — particularly around transparency, bias audits, and model documentation.",
+      date: "Feb 2026",
+      url: "https://www.congress.gov/bill/119th-congress/senate-bill/3952",
+      risk: "WATCH",
+    },
+    {
+      source: "Congress.gov",
+      category: "AI Governance",
+      title: "American AI Leadership & Uniformity Act (H.R. 5388)",
+      summary: "Would preempt state AI laws in favor of a single federal standard. Directly affects startup founders currently navigating the patchwork of CO, IL, TX, and NY state AI regulations — preemption could simplify or shift compliance obligations significantly.",
+      date: "2025",
+      url: "https://www.congress.gov/bill/119th-congress/house-bill/5388",
+      risk: "WATCH",
+    },
+    {
+      source: "Congress.gov",
+      category: "AI Governance · Fintech",
+      title: "Unleashing AI Innovation in Financial Services Act (H.R. 4801)",
+      summary: "Creates regulatory sandbox allowing fintech startups to experiment with AI without enforcement risk. Any startup using AI in payments, lending, or financial data should track this — sandbox approval could significantly reduce early-stage legal exposure.",
+      date: "Aug 2025",
+      url: "https://www.congress.gov/bill/119th-congress/house-bill/4801",
+      risk: "INFO",
+    },
+    {
+      source: "Congress.gov",
+      category: "AI Governance · Liability",
+      title: "Artificial Intelligence Civil Rights Act (H.R. 6356)",
+      summary: "Creates private right of action against algorithmic discrimination in employment, housing, credit, and public accommodations. Startup founders using AI in hiring tools, recommendation systems, or consumer-facing decisions face new federal liability exposure if enacted.",
+      date: "2025",
+      url: "https://www.congress.gov/bill/119th-congress/house-bill/6356",
+      risk: "WATCH",
+    },
+    {
+      source: "Congress.gov",
+      category: "AI Governance · Research Infrastructure",
+      title: "CREATE AI Act (H.R. 2385)",
+      summary: "Establishes National AI Research Resource providing startups and researchers federally-subsidized access to compute, data, and models. Early-stage AI startups may qualify for NAIRR access — reduces infrastructure costs during pre-revenue development.",
+      date: "Mar 2025",
+      url: "https://www.congress.gov/bill/119th-congress/house-bill/2385",
+      risk: "INFO",
+    },
+    {
+      source: "Congress.gov",
+      category: "AI Governance · Financial Crime",
+      title: "AI PLAN Act (H.R. 2152)",
+      summary: "Requires federal strategy to counter AI-enabled financial fraud and misinformation. Any startup handling payments, data aggregation, or financial services should monitor — sets precedent for AI-specific AML and fraud compliance obligations.",
+      date: "2025",
+      url: "https://www.congress.gov/bill/119th-congress/house-bill/2152",
+      risk: "INFO",
+    },
+  ];
 }
 
 async function fetchSEC() {
@@ -251,7 +285,7 @@ export default async function handler(req) {
   signals.sort((a, b) => (order[a.risk] ?? 2) - (order[b.risk] ?? 2));
 
   const payload = {
-    signals: signals.slice(0, 8),
+    signals: signals,
     generatedAt: new Date().toISOString(),
     sourceCount: signals.length,
   };
