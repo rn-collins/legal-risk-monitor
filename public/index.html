@@ -453,6 +453,24 @@
 
   .footer-link:hover { color: var(--teal); }
 
+  .footer-contact-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-light);
+    transition: color 0.15s;
+  }
+
+  .footer-contact-btn:hover { color: var(--teal); }
+
+  .footer-contact-btn.copied {
+    color: var(--teal);
+    font-weight: 500;
+  }
+
   .disclaimer {
     font-size: 10px;
     color: var(--ink-light);
@@ -539,7 +557,7 @@
       </div>
       <div class="footer-links">
         <a href="https://linkedin.com/in/rn-collins" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-        <a href="mailto:collins.ra@northeastern.edu" class="footer-link">Contact the Builder</a>
+        <button class="footer-link footer-contact-btn" id="contact-btn" onclick="handleContact()">Contact the Builder</button>
       </div>
     </div>
     <p class="disclaimer">
@@ -623,7 +641,7 @@ async function handleSubscribe() {
     const data = await res.json();
     document.getElementById('sub-confirm').style.display = 'block';
     document.getElementById('sub-confirm').textContent = data.duplicate
-      ? '✓ Already subscribed — you will keep receiving Monday alerts.'
+      ? '✓ Already subscribed — you'll keep receiving Monday alerts.'
       : '✓ Subscribed. First alert arrives Monday morning.';
     document.getElementById('sub-email').disabled = true;
     btn.textContent = 'Subscribed';
@@ -637,6 +655,25 @@ async function handleSubscribe() {
 loadSignals();
 // Refresh every 60 minutes
 setInterval(loadSignals, 60 * 60 * 1000);
+
+function handleContact() {
+  const email = 'collins.ra@northeastern.edu';
+  const btn = document.getElementById('contact-btn');
+  // Copy to clipboard
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(email).catch(() => {});
+  }
+  // Open mail client
+  window.location.href = 'mailto:' + email;
+  // Visual feedback
+  const original = btn.textContent;
+  btn.textContent = '✓ Copied: ' + email;
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.textContent = original;
+    btn.classList.remove('copied');
+  }, 2500);
+}
 </script>
 
 </body>
