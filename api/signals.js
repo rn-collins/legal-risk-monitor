@@ -151,7 +151,7 @@ async function fetchFTC() {
       title: "FTC AI Enforcement Action: Rytr — AI-Generated Fake Reviews",
       summary: "FTC settled with Rytr for enabling AI-generated fake reviews at scale. Startup founders using AI to generate testimonials, product reviews, or social proof face FTC enforcement risk. The settlement prohibits creating services that generate deceptive review content and sets precedent for AI-enabled consumer deception liability.",
       date: "Jan 2025",
-      url: "https://www.ftc.gov/news-events/news/press-releases",
+      url: "https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes",
       risk: "IMMEDIATE",
     },
     {
@@ -160,7 +160,7 @@ async function fetchFTC() {
       title: "FTC AI Accountability Report — Commercial Surveillance & Algorithmic Harms",
       summary: "FTC issued guidance warning that AI-enabled commercial surveillance, opaque algorithmic decision-making, and biometric data collection are priority enforcement areas. Startup founders using behavioral data, recommendation algorithms, or AI-driven personalization should review data practices against FTC's stated enforcement priorities.",
       date: "2025",
-      url: "https://www.ftc.gov/reports/ai-accountability",
+      url: "https://www.ftc.gov/business-guidance/blog/2024/09/operation-ai-comply-continuing-crackdown-overpromises-ai-related-lies",
       risk: "WATCH",
     },
     {
@@ -169,7 +169,7 @@ async function fetchFTC() {
       title: "FTC Section 5 — AI Deception & Unfair Practices Enforcement Expansion",
       summary: "FTC has expanded application of Section 5 unfairness doctrine to AI-enabled practices including undisclosed AI use in consumer interactions, AI-generated impersonation, and automated dark patterns. Any startup using AI in customer-facing products should audit for compliance with FTC's expanded AI enforcement framework.",
       date: "2025-2026",
-      url: "https://www.ftc.gov/business-guidance/blog",
+      url: "https://www.ftc.gov/industry/technology/artificial-intelligence",
       risk: "WATCH",
     },
   ];
