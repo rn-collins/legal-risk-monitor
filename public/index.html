@@ -623,7 +623,7 @@ async function handleSubscribe() {
     const data = await res.json();
     document.getElementById('sub-confirm').style.display = 'block';
     document.getElementById('sub-confirm').textContent = data.duplicate
-      ? '✓ Already subscribed — you'll keep receiving Monday alerts.'
+      ? '✓ Already subscribed — you will keep receiving Monday alerts.'
       : '✓ Subscribed. First alert arrives Monday morning.';
     document.getElementById('sub-email').disabled = true;
     btn.textContent = 'Subscribed';
