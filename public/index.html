@@ -520,7 +520,7 @@
   <div class="header-inner">
     <div class="header-brand">
       <span class="header-eyebrow">Aloha AI Consulting</span>
-      <span class="header-title">Startup Legal Risk Monitor</span>
+      <h1 class="header-title">Startup Legal Risk Monitor</h1>
     </div>
     <div class="header-meta">
       <span class="live-dot" id="live-label">Loading</span>
@@ -541,7 +541,7 @@
 <main class="main">
 
   <div class="section-header">
-    <span class="section-title">Active Signals</span>
+    <h2 class="section-title">Active Signals</h2>
     <span class="last-updated" id="last-updated-label">—</span>
   </div>
 
@@ -554,8 +554,55 @@
     <div class="skeleton"><div class="skel-line wide"></div><div class="skel-line full"></div><div class="skel-line mid"></div></div>
   </div>
 
+  <div class="section-header">
+    <h2 class="section-title">What This Monitor Tracks</h2>
+  </div>
+  <div style="max-width:720px;margin-bottom:48px">
+    <p style="font-size:13px;color:var(--ink-mid);line-height:1.7;margin-bottom:20px">
+      This monitor pulls from five categories of public regulatory activity that create legal exposure for startups building and shipping fast — the categories founders are least likely to be tracking themselves, because regulatory monitoring isn't a full-time job at a five-person company.
+    </p>
+    <div style="display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+      <div>
+        <h3 style="font-family:var(--font-sans);font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px">SEC Filings &amp; Rulemaking</h3>
+        <p style="font-size:12px;color:var(--ink-mid);line-height:1.6">Proposed and finalized rules, enforcement releases, and interpretive guidance affecting how startups raise capital, disclose to investors, and structure equity.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-sans);font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px">FTC Enforcement Actions</h3>
+        <p style="font-size:12px;color:var(--ink-mid);line-height:1.6">Consent orders, complaints, and stated enforcement priorities — especially around data practices, dark patterns, and AI-related claims — that signal where the agency is spending its attention.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-sans);font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px">CFPB Guidance</h3>
+        <p style="font-size:12px;color:var(--ink-mid);line-height:1.6">Advisory opinions and guidance documents relevant to startups touching consumer financial products, lending, or payments infrastructure.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-sans);font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px">Federal &amp; State AI Legislation</h3>
+        <p style="font-size:12px;color:var(--ink-mid);line-height:1.6">Bills moving through Congress and state legislatures that would regulate AI model deployment, disclosure obligations, or automated decision-making — the fastest-moving and least-settled category tracked here.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <h2 class="section-title">How Risk Tiers Work</h2>
+  </div>
+  <div style="max-width:720px;margin-bottom:48px">
+    <p style="font-size:13px;color:var(--ink-mid);line-height:1.7;margin-bottom:16px">Every signal above is tagged with one of three tiers, so you can triage at a glance instead of reading five paragraphs to figure out whether something needs a lawyer this week.</p>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap"><span class="risk-badge badge-immediate">IMMEDIATE</span><span style="font-size:12px;color:var(--ink-mid)">Action-relevant now — a finalized rule, enforcement action, or filing deadline that likely changes what you should do this week.</span></div>
+      <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap"><span class="risk-badge badge-watch">WATCH</span><span style="font-size:12px;color:var(--ink-mid)">Not urgent yet, but moving — a bill advancing through committee or draft guidance worth having on your radar before it finalizes.</span></div>
+      <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap"><span class="risk-badge badge-info">INFO</span><span style="font-size:12px;color:var(--ink-mid)">Background context — useful for understanding the direction of regulatory travel, not something requiring an immediate response.</span></div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <h2 class="section-title">Why It Matters</h2>
+  </div>
+  <div style="max-width:720px;margin-bottom:48px">
+    <p style="font-size:13px;color:var(--ink-mid);line-height:1.7;margin-bottom:12px">Founders are usually the last to know when a rule or enforcement posture shifts under their product. This monitor exists to close that gap — one page, refreshed hourly, pulling directly from public government feeds instead of secondhand summaries. It doesn't replace legal counsel; it replaces not knowing there was something worth asking counsel about.</p>
+    <p style="font-size:13px;color:var(--ink-mid);line-height:1.7">Source categories reviewed as of August 2026. Agency priorities and legislative activity shift regularly — this page tracks live signals, not a fixed snapshot. Want a closer read on how a specific signal applies to your product or vertical? <button type="button" onclick="document.getElementById('ca-modal-legal-risk-monitor').style.display='flex'" style="background:none;border:none;padding:0;font:inherit;color:var(--teal);text-decoration:underline;cursor:pointer">Contact the Architect</button> for a scoped regulatory risk review.</p>
+  </div>
+
   <div class="subscribe-section">
-    <div class="subscribe-heading">Get weekly alerts</div>
+    <h2 class="subscribe-heading">Get weekly alerts</h2>
     <p class="subscribe-sub">
       New signals delivered every Monday morning — SEC rulemaking, FTC enforcement, AI governance bills advancing through committee.
       No gate. Unsubscribe anytime.
@@ -568,7 +615,7 @@
   </div>
 
   <div class="section-header">
-    <span class="section-title">Related Tools</span>
+    <h2 class="section-title">Related Tools</h2>
   </div>
 
   <div class="signal-grid" style="margin-bottom:0">
