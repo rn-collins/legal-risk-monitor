@@ -800,7 +800,7 @@ setInterval(loadSignals, 60 * 60 * 1000);
     document.getElementById('ca-form-legal-risk-monitor').addEventListener('submit',function(e){
       e.preventDefault();
       var f=e.target;
-      fetch('https://rn-api.vercel.app/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},
+      fetch('https://rn-api-rn-collins.vercel.app/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},
         body:JSON.stringify({name:f.name.value,email:f.email.value,message:f.message.value,source:'legal-risk-monitor'})
       }).then(function(){
         f.reset();
