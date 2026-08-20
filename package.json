@@ -1,9 +1,1 @@
-{
-  "name": "legal-risk-monitor",
-  "version": "1.0.0",
-  "description": "Startup Legal Risk Monitor — Aloha AI Consulting",
-  "private": true,
-  "engines": {
-    "node": ">=18"
-  }
-}
+{"name":"legal-risk-monitor","version":"1.1.0","private":true,"type":"module","engines":{"node":">=20"},"scripts":{"test":"node --test","build":"node scripts/validate.mjs"}}
